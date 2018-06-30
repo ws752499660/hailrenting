@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>房东登录成功</title>
+</head>
+<body>
+<div>
+    <a th:href="@{/index}">返回主页</a></br>
+    <h1>房东登录成功！</h1>
+    <table>
+        <tr>
+            <td>您是尊贵的：</td>
+            <td th:text="${owner.name}"></td>
+        </tr>
+    </table>
+</div>
+<div>
+    <h3>您的房源信息如下：</h3>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>地址</th>
+            <th>类型</th>
+            <th>适合住宿的人数</th>
+            <th>房租</th>
+            <th>状态</th>
+            <th>状态出现的原因</th>
+        </tr>
+        <tr th:each="info:${infoList.list}">
+            <td th:text="${info.id}">ID</td>
+            <td th:text="${info.addr}">地址</td>
+            <td th:text="${info.type}">类型</td>
+            <td th:text="${info.holdnum}">适合住宿的人数</td>
+            <td th:text="${info.price}">房租</td>
+            <td th:text="${info.status}">状态</td>
+            <td th:text="${info.statusnote}">状态出现的原因</td>
+        </tr>
+    </table>
+</div>
+<div>
+    <a th:href="@{'/owner/'+${owner.id}+'/addinfo'}">添加房源</a>
+    </br>
+    <a th:href="@{'/owner/'+${owner.id}+'/editinfo'}">修改房源信息</a>
+</div>
+<div>
+    <h3>当前您的预约信息如下：</h3>
+    <table border="1">
+        <tr>
+            <th>地点</th>
+            <th>时间</th>
+            <th>学生姓名</th>
+            <th>学生电话</th>
+            <th>学生性别</th>
+            <th>房源ID</th>
+            <th>是否已经过期</th>
+        </tr>
+        <tr th:each="info:${meetingInfoList.list}">
+            <td th:text="${info.addr}">地点</td>
+            <td th:text="${info.time}">时间</td>
+            <td th:text="${info.studentName}">学生姓名</td>
+            <td th:text="${info.studentTel}">学生电话</td>
+            <td th:if="${info.studentGender} eq 'm'">男</td>
+            <td th:if="${info.studentGender} eq 'f'">女</td>
+            <td th:text="${info.houseId}">房源ID</td>
+            <td th:if="${info.finsh} eq 'Y'">已过期</td>
+            <td th:if="${info.finsh} eq 'N'">未过期</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

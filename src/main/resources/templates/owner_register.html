@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>房东注册</title>
+</head>
+<body>
+<a th:href="@{/index}">返回主页</a></br>
+<h1>房东注册</h1>
+<form method="post"
+      th:action="@{/owner/register}" th:method="post" th:object="${owner}">
+    <table>
+        <tr>
+            <td>姓名：</td>
+            <td>
+                <input type="text" th:field="*{name}">
+            </td>
+        </tr>
+        <tr>
+            <td>联系地址：</td>
+            <td>
+                <input type="text" th:field="*{addr}">
+            </td>
+        </tr>
+        <tr>
+            <td>电话：</td>
+            <td>
+                <input type="text" th:field="*{tel}">
+            </td>
+        </tr>
+        <tr>
+            <td>密码：</td>
+            <td>
+                <input type="password" th:field="*{password}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="注册">
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>预约见面时间</title>
+</head>
+<body>
+<h3>当前房源信息如下：</h3>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>地址</th>
+        <th>类型</th>
+        <th>适合住宿的人数</th>
+        <th>房租</th>
+        <th>状态</th>
+        <th>状态出现的原因</th>
+        <th>房东ID</th>
+    </tr>
+    <tr th:each="info:${infoList.list}">
+        <td th:text="${info.id}">ID</td>
+        <td th:text="${info.addr}">地址</td>
+        <td th:text="${info.type}">类型</td>
+        <td th:text="${info.holdnum}">适合住宿的人数</td>
+        <td th:text="${info.price}">房租</td>
+        <td th:text="${info.status}">状态</td>
+        <td th:text="${info.statusnote}">状态出现的原因</td>
+        <td th:text="${info.ownerid}">房东ID</td>
+    </tr>
+</table>
+<br>
+<h3>请选择你想租赁的房源：</h3>
+<form method="post" th:method="post"
+      th:action="@{'/student/'+${student.id}+'/booking'}" th:object="${meetingInfo}">
+    <table>
+        <tr>
+            <td>选择你想租赁的房源ID：</td>
+            <td>
+                <select th:field="*{houseId}">
+                    <option th:each="idbody:${infoList.list}" th:value="${idbody.id}" th:text="${idbody.id}">
+                    </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+           <td>
+               <input type="submit" value="提交" />
+           </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

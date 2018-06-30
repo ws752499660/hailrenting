@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改房源信息</title>
+</head>
+<body>
+<a th:href="@{/index}">返回主页</a></br>
+<h1>请修改您的房源信息</h1>
+<form method="post"
+      th:method="post" th:action="@{'/owner/'+${owner.id}+'/editinfo'}" th:object="${infoList}">
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>地址</th>
+            <th>类型</th>
+            <th>适合住宿的人数</th>
+            <th>房租</th>
+            <th>房主的ID</th>
+            <th>状态</th>
+            <th>状态出现的原因</th>
+        </tr>
+        <tr th:each="info,infostart:${infoList.list}">
+            <td><input type="text" th:field="*{list[__${infostart.index}__].id}" readonly="readonly"></td>
+            <td><input type="text" th:field="*{list[__${infostart.index}__].addr}"></td>
+            <td><input type="text" th:field="*{list[__${infostart.index}__].type}"></td>
+            <td><input type="text" th:field="*{list[__${infostart.index}__].holdnum}"></td>
+            <td><input type="text" th:field="*{list[__${infostart.index}__].price}"></td>
+            <td><input type="text" th:field="*{list[__${infostart.index}__].ownerid}"></td>
+            <td th:if="${info.status} eq '可供出租'">
+                <select th:field="*{list[__${infostart.index}__].status}">
+                    <option value="可供出租">可供出租</option>
+                    <option value="不可出租">不可出租</option>
+                </select></td>
+            <td th:if="${info.status} eq '不可出租'">
+                <select th:field="*{list[__${infostart.index}__].status}">
+                    <option value="不可出租">不可出租</option>
+                    <option value="可供出租">可供出租</option>
+                </select></td>
+            <td><input type="text" th:field="*{list[__${infostart.index}__].statusnote}"></td>
+        </tr>
+    </table>
+    <input type="submit" value="提交">
+</form>
+<br>
+<a th:href="@{'/owner/'+${owner.id}}"> 返回用户详情界面 </a>
+</body>
+</html>

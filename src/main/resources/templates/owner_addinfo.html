@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加房源</title>
+</head>
+<body>
+<h1>请输入添加房源的信息</h1>
+<form method="post"
+      th:action="@{'/owner/'+${id}+'/addinfo'}" th:object="${newInfo}" th:method="post">
+    <table>
+        <tr>
+            <td>地址：</td>
+            <td><input type="text" id="addr" th:field="*{addr}"></td>
+        </tr>
+        <tr>
+            <td>房间类型(单间、复式）:</td>
+            <td><input type="text" id="type" th:field="*{type}"></td>
+        </tr>
+        <tr>
+            <td>适合居住的人数：</td>
+            <td><input type="text" id="holdnum" th:field="*{holdnum}"></td>
+        </tr>
+        <tr>
+            <td>房租：</td>
+            <td><input type="text" id="price" th:field="*{price}"></td>
+        </tr>
+        <tr>
+            <td>现在是否可以出租:</td>
+            <td><select name="是否可以出租" id="status" th:field="*{status}">
+                <option value="可供出租">是</option>
+                <option value="不可出租">否</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td>当前状态的原因（没有特殊原因请填无）</td>
+        <td>
+            <textarea id="statusnote" rows="10" cols="40" th:field="*{statusnote}">无</textarea></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="提交"></td>
+            <td><a th:href="'/owner/'+${id}" class="button">取消</td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

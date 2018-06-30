@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>支付服务费用</title>
+</head>
+<body>
+<h1>请扫描下方二维码支付费用</h1>
+<br>
+<h2>注：费用为房租的2%</h2>
+<table>
+    <tr>
+        <td>本次支付的费用为：</td>
+        <td th:text="${houseinfo.price}*0.02">元</td>
+    </tr>
+</table>
+<img src="/pay.jpg" height="20%" width="20%">
+<br>
+<h3>
+    <a th:href="@{'/owner/'+${owner.id}+'/afterpay'}">我已付款，继续</a>
+</h3>
+</body>
+</html>

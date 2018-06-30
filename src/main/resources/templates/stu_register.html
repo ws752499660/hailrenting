@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>学生注册</title>
+</head>
+<body>
+<a th:href="@{/index}">返回主页</a></br>
+<h1>学生注册</h1>
+<form method="post"
+      th:action="@{/student/register}" th:method="post" th:object="${student}">
+    <table>
+        <tr>
+            <td>姓名：</td>
+            <td>
+                <input type="text" th:field="*{name}">
+            </td>
+        </tr>
+        <tr>
+            <td>联系地址：</td>
+            <td>
+                <input type="text" th:field="*{addr}">
+            </td>
+        </tr>
+        <tr>
+            <td>电话：</td>
+            <td>
+                <input type="text" th:field="*{tel}">
+            </td>
+        </tr>
+        <tr>
+            <td>生日：(eg.19970228)</td>
+            <td>
+                <input type="text" th:field="*{birthday}">
+            </td>
+        </tr>
+        <tr>
+            <td>性别：</td>
+            <td>
+                <select th:field="*{gender}">
+                    <option value="m">男</option>
+                    <option value="f">女</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>密码：</td>
+            <td>
+                <input type="password" th:field="*{password}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="注册">
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

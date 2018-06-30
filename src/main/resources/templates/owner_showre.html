@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>注册结果</title>
+</head>
+<body>
+<h1>请牢记您的用户ID，以后凭此ID和密码登录系统</h1>
+<h3>尊贵的<span th:text="${owner.name}"></span></h3>
+<h3>您的用户ID为：<span th:text="${owner.id}"></span></h3>
+<a th:href="@{/index}">返回主页</a>
+</body>
+</html>
