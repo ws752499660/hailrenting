@@ -2,5 +2,5 @@
 
 ## 注意（必读！！！！） 
 使用本系统必须先在本体配置端口为3306，名为springexam的数据库  
-数据库结构化和测试数据为springexam.sql，数据库类型为mysql
+数据库结构化和测试数据为springexam.sql，数据库类型为mysql  
 使用gradel而不是maven作为构建工具，请务必注意
